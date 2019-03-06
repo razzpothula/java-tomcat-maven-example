@@ -7,5 +7,9 @@ git url :'https://github.com/razzpothula/java-tomcat-maven-example.git'
     def mvnhome = tool name: 'mvn', type: 'maven'
     sh "${mvnhome}/bin/mvn compile"
   }
+  stage('Package the code'){
+    def mvnhome = tool name: 'mvn', type: 'maven'
+    sh "${mvnhome}/bin/mvn package"
+  }
 }
 
