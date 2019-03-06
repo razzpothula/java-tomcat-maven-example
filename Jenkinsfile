@@ -7,6 +7,12 @@ git url :'https://github.com/razzpothula/java-tomcat-maven-example.git'
     def mvnhome = tool name: 'mvn', type: 'maven'
     sh "${mvnhome}/bin/mvn compile"
   }
+  stage('Sonarqube Analysis'){
+    def mvnhome = tool name: 'mvn', type: 'maven'
+    withSonarQubeEnv('sonar-5'){
+      sh "${mvnhome}/bin/mvn sonar:sonar"
+    }
+  }
   stage('Package the code'){
     def mvnhome = tool name: 'mvn', type: 'maven'
     sh "${mvnhome}/bin/mvn package"
