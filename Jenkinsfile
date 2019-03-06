@@ -26,7 +26,7 @@ git url :'https://github.com/razzpothula/java-tomcat-maven-example.git'
     sh "${mvnhome}/bin/mvn package"
   }
   stage('Deploy to tomcat server'){
-    sshagent(['tomcat-dply']){
+    sshagent(['new-deploy']){
       sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/cicdpipeline/target/*.war root@13.127.65.33:/opt/tomcat/webapps'
     } 
   }
