@@ -26,8 +26,10 @@ git url :'https://github.com/razzpothula/java-tomcat-maven-example.git'
     sh "${mvnhome}/bin/mvn package"
   }
   stage('Deploy to tomcat server'){
-      sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/cicdpipeline/target/*.war ubuntut@13.127.65.33:/opt/tomcat/webapp'
+    sshagent(['new-deploy'])
+      sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/cicdpipeline/target/*.war ubuntut@13.127.65.33:/opt/tomcat/webapps'
     } 
+  }
   stage('Email Notifications'){
     mail bcc: '', body: '''To check the email
 Notification
