@@ -12,7 +12,7 @@ git url :'https://github.com/razzpothula/java-tomcat-maven-example.git'
     sh "${mvnhome}/bin/mvn package"
   }
   stage('Deploy to tomcat server'){
-    sshagent(['tomcat-deploy']){
+    sshagent(['tomcat-deploy']) {
       sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/jenkinsfile_project/target/*.war ubuntut@13.234.136.208:/opt/tomcat/webapps'
     } 
   }
