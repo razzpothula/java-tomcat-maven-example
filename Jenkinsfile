@@ -1,7 +1,7 @@
-pipeline{
+pipeline
   node{
-    stage("SCM Checkout "){
+    stage("SCM Checkout"){
       git 'https://github.com/razzpothula/java-tomcat-maven-example.git'
     }
   }
-}
+
