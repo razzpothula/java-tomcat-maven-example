@@ -4,8 +4,11 @@ pipeline
       //add to github url through declarative syntax
      git credentialsId: 'username', url: 'https://github.com/razzpothula/java-tomcat-maven-example.git'
     }
+      stage('Package'){
+            def mvnhome = tool name: 'mvn', type: 'maven'
+            sh "${mvnhome}/bin/mvn package"
   }
-   
+  }
    
   
 
