@@ -18,15 +18,7 @@ pipeline
         def mvnhome = tool 'sonar'
     }
   }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}
+ }
 
     
     
