@@ -13,11 +13,10 @@ pipeline
             def mvnhome = tool name: 'mvn', type: 'maven'
             sh "${mvnhome}/bin/mvn package"
   }
-    stage('SonarQube Analysis'){
-            def mvnhome = tool name: 'mvn', type: 'maven'
-            withSonarQubeEnv('sonar'){
-                        sh 'mvn clean package sonar:sonar'
-  }
+    stage('Sonarqube') {
+    environment {
+        def mvnhome = tool 'sonar'
+    }
   }
   }
     
